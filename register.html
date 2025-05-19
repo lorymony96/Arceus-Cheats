@@ -12,9 +12,6 @@
       background-color: #0a0a0a;
       color: white;
       overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       min-height: 100vh;
     }
 
@@ -56,6 +53,10 @@
     }
 
     .form-container {
+      position: absolute;
+      top: 180px; /* Puedes cambiar este valor para mover el formulario */
+      left: 50%;
+      transform: translateX(-50%);
       background-color: #111;
       border: 2px solid #ff2b2b;
       border-radius: 10px;
@@ -64,8 +65,7 @@
       width: 90%;
       max-width: 400px;
       text-align: center;
-      margin-top: -100px;
-      z-index: 2;
+      z-index: 3;
     }
 
     h2 {
