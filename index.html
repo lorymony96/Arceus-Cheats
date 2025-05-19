@@ -48,10 +48,11 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 tarjetas por fila */
-      gap: 20px;
-      max-width: 1200px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1000px;
       width: 100%;
+      margin: 0 auto;
     }
 
     @media (max-width: 900px) {
@@ -77,6 +78,9 @@
       flex-direction: column;
       justify-content: space-between;
       transition: transform 0.2s ease;
+      min-height: 330px;
+      max-width: 280px;
+      margin: 0 auto;
     }
 
     .product:hover {
@@ -139,7 +143,7 @@
 
   <main>
     <div class="grid">
-      <!-- Tarjetas de producto en orden de menor a mayor precio -->
+      <!-- Tarjetas ordenadas por precio -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>2 días</h2>
