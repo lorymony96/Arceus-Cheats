@@ -7,30 +7,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
-  margin: 0;
-  font-family: 'Orbitron', sans-serif;
-  background-color: #0a0a0a;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  overflow-x: hidden; /* <-- esto evita el scroll lateral */
-}
-
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+    }
 
     header {
       background-color: #111;
       padding: 20px 40px;
-      width: 100%;
-      box-shadow: 0 2px 10px #000;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px #000;
     }
 
-    header h1 {
-      margin: 0;
+    .title {
       font-size: 2rem;
       color: #ff2b2b;
       letter-spacing: 1px;
@@ -48,7 +41,6 @@
     }
 
     main {
-      flex: 1;
       display: flex;
       justify-content: center;
       padding: 40px 20px;
@@ -56,24 +48,23 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
       max-width: 1200px;
       width: 100%;
-      justify-content: center;
     }
 
     .product {
       background-color: #111;
       border: 1px solid #ff2b2b;
       border-radius: 15px;
-      padding: 25px;
+      padding: 20px;
       text-align: center;
       box-shadow: 0 0 10px #ff2b2b;
-      transition: transform 0.2s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform 0.2s ease;
     }
 
     .product:hover {
@@ -81,13 +72,13 @@
     }
 
     .product img {
-      width: 60px;
-      margin: 0 auto 15px;
+      width: 50px;
+      margin: 0 auto 10px;
     }
 
     .product h2 {
       margin: 10px 0 5px;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       color: #ff2b2b;
     }
 
@@ -98,10 +89,10 @@
     }
 
     .description {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #ccc;
       margin-bottom: 10px;
-      min-height: 38px;
+      min-height: 36px;
     }
 
     .stock {
@@ -113,8 +104,8 @@
     .buyBtn {
       background-color: #ff2b2b;
       border: none;
-      padding: 10px 25px;
-      font-size: 1rem;
+      padding: 8px 18px;
+      font-size: 0.95rem;
       border-radius: 8px;
       color: white;
       cursor: pointer;
@@ -128,7 +119,7 @@
 </head>
 <body>
   <header>
-    <h1>Arceus Cheats</h1>
+    <div class="title">Arceus Cheats</div>
     <div class="register-link">
       <a href="register.html">Registrarse</a>
     </div>
@@ -136,7 +127,7 @@
 
   <main>
     <div class="grid">
-      <!-- Producto -->
+      <!-- Tarjetas de producto -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>2 días</h2>
@@ -266,4 +257,3 @@
   </script>
 </body>
 </html>
-
