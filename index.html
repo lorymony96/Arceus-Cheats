@@ -86,7 +86,8 @@
 
     .product img {
       width: 36px;
-      margin-bottom: 6px;
+      margin: 0 auto 6px;
+      display: block;
     }
 
     .product h2 {
@@ -112,6 +113,14 @@
       font-size: 0.75rem;
       margin-bottom: 8px;
       font-weight: bold;
+    }
+
+    .stock.available {
+      color: #00ff00;
+    }
+
+    .stock.unavailable {
+      color: #ff0000;
     }
 
     .buyBtn {
@@ -140,7 +149,7 @@
 
   <main>
     <div class="grid">
-      <!-- 2 días -->
+      <!-- Tarjetas ordenadas por precio -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>2 días</h2>
@@ -157,7 +166,6 @@
         </form>
       </div>
 
-      <!-- 7 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>7 días</h2>
@@ -174,7 +182,6 @@
         </form>
       </div>
 
-      <!-- 30 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>30 días</h2>
@@ -191,7 +198,6 @@
         </form>
       </div>
 
-      <!-- 90 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>90 días</h2>
@@ -208,7 +214,6 @@
         </form>
       </div>
 
-      <!-- 180 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>180 días</h2>
@@ -225,7 +230,6 @@
         </form>
       </div>
 
-      <!-- 365 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>365 días</h2>
@@ -256,13 +260,19 @@
         const data = await response.json();
         if (data.available) {
           stockElement.textContent = "Stock disponible";
+          stockElement.classList.add("available");
+          stockElement.classList.remove("unavailable");
           button.disabled = false;
         } else {
           stockElement.textContent = "Producto agotado";
+          stockElement.classList.add("unavailable");
+          stockElement.classList.remove("available");
           button.disabled = true;
         }
       } catch (error) {
         stockElement.textContent = "Error al conectar";
+        stockElement.classList.add("unavailable");
+        stockElement.classList.remove("available");
         button.disabled = true;
       }
     }
