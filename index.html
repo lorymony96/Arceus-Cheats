@@ -45,6 +45,7 @@
       gap: 30px;
       max-width: 1200px;
       width: 100%;
+      justify-content: center;
     }
 
     .product {
@@ -54,11 +55,10 @@
       padding: 25px;
       text-align: center;
       box-shadow: 0 0 10px #ff2b2b;
+      transition: transform 0.2s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 380px;
-      transition: transform 0.2s ease;
     }
 
     .product:hover {
@@ -67,32 +67,29 @@
 
     .product img {
       width: 60px;
-      margin-bottom: 10px;
-      align-self: center;
+      margin-bottom: 15px;
     }
 
     .product h2 {
-      margin: 5px 0;
-      font-size: 1.2rem;
+      margin: 10px 0 5px;
+      font-size: 1.3rem;
       color: #ff2b2b;
     }
 
     .product .price {
-      font-size: 1.1rem;
-      color: #ff4f4f;
-      margin: 5px 0 10px;
+      margin-bottom: 10px;
+      color: #ffb3b3;
+      font-size: 1rem;
     }
 
     .product p {
       font-size: 0.9rem;
-      color: #ccc;
-      margin-bottom: 10px;
-      flex-grow: 1;
+      margin: 0 0 10px 0;
     }
 
     .stock {
       font-size: 1rem;
-      margin: 10px 0;
+      margin: 5px 0 15px 0;
       font-weight: bold;
     }
 
@@ -118,10 +115,11 @@
   </header>
   <main>
     <div class="grid">
+      <!-- Licencia de 2 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 2 días</h2>
-        <div class="price">3,00 €</div>
+        <div class="price">3,00 €</div>
         <p>Ideal para probar el aimbot durante un fin de semana.</p>
         <div class="stock" data-duration="2">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -134,10 +132,11 @@
         </form>
       </div>
 
+      <!-- Licencia de 7 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 7 días</h2>
-        <div class="price">5,00 €</div>
+        <div class="price">5,00 €</div>
         <p>Perfecto para partidas intensas durante toda la semana.</p>
         <div class="stock" data-duration="7">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -150,10 +149,11 @@
         </form>
       </div>
 
+      <!-- Licencia de 30 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 30 días</h2>
-        <div class="price">12,00 €</div>
+        <div class="price">12,00 €</div>
         <p>Usa Arceus Aimbot sin límites durante 30 días.</p>
         <div class="stock" data-duration="30">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -166,10 +166,11 @@
         </form>
       </div>
 
+      <!-- Licencia de 90 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 90 días</h2>
-        <div class="price">20,00 €</div>
+        <div class="price">20,00 €</div>
         <p>Elige esta opción si buscas rendimiento prolongado con ahorro.</p>
         <div class="stock" data-duration="90">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -182,10 +183,11 @@
         </form>
       </div>
 
+      <!-- Licencia de 180 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 180 días</h2>
-        <div class="price">35,00 €</div>
+        <div class="price">35,00 €</div>
         <p>Medio año de ventaja absoluta. Recomendado para jugadores activos.</p>
         <div class="stock" data-duration="180">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -198,10 +200,11 @@
         </form>
       </div>
 
+      <!-- Licencia de 365 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 365 días</h2>
-        <div class="price">60,00 €</div>
+        <div class="price">60,00 €</div>
         <p>Acceso completo durante todo un año. Ahorro y comodidad total.</p>
         <div class="stock" data-duration="365">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -224,10 +227,16 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ duration_days: duration })
         });
+
         const data = await response.json();
-        stockElement.textContent = data.available ? "Stock disponible" : "Producto agotado";
-        button.disabled = !data.available;
-      } catch {
+        if (data.available) {
+          stockElement.textContent = "Stock disponible";
+          button.disabled = false;
+        } else {
+          stockElement.textContent = "Producto agotado";
+          button.disabled = true;
+        }
+      } catch (error) {
         stockElement.textContent = "Error al conectar";
         button.disabled = true;
       }
@@ -241,3 +250,4 @@
   </script>
 </body>
 </html>
+
