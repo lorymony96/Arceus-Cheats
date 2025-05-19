@@ -85,21 +85,28 @@
     }
 
     .product h2 {
-      margin: 10px 0;
+      margin: 10px 0 5px;
       font-size: 1.3rem;
       color: #ff2b2b;
+    }
+
+    .price {
+      font-size: 1rem;
+      color: #ffcccc;
+      margin-bottom: 10px;
     }
 
     .description {
       font-size: 0.9rem;
       color: #ccc;
-      margin-bottom: 5px;
-      min-height: 40px;
+      margin-bottom: 10px;
+      min-height: 38px;
     }
 
     .stock {
       font-size: 1rem;
-      margin: 10px 0;
+      margin-bottom: 12px;
+      font-weight: bold;
     }
 
     .buyBtn {
@@ -129,98 +136,99 @@
 
   <main>
     <div class="grid">
-      <!-- 2 días -->
+      <!-- Lista de productos -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>2 días</h2>
+        <div class="price">3,00 €</div>
         <div class="description">Ideal para probar el cheat sin compromiso.</div>
         <div class="stock" data-duration="2">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 2 días">
-          <input type="hidden" name="amount" value="3.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 2 días" />
+          <input type="hidden" name="amount" value="3.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
 
-      <!-- 7 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>7 días</h2>
+        <div class="price">5,00 €</div>
         <div class="description">Acceso completo durante toda una semana.</div>
         <div class="stock" data-duration="7">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 7 días">
-          <input type="hidden" name="amount" value="5.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 7 días" />
+          <input type="hidden" name="amount" value="5.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
 
-      <!-- 30 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>30 días</h2>
+        <div class="price">12,00 €</div>
         <div class="description">Para jugadores constantes que quieren rendimiento.</div>
         <div class="stock" data-duration="30">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 30 días">
-          <input type="hidden" name="amount" value="12.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 30 días" />
+          <input type="hidden" name="amount" value="12.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
 
-      <!-- 90 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>90 días</h2>
+        <div class="price">20,00 €</div>
         <div class="description">Mejor precio por día para uso continuo.</div>
         <div class="stock" data-duration="90">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 90 días">
-          <input type="hidden" name="amount" value="20.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 90 días" />
+          <input type="hidden" name="amount" value="20.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
 
-      <!-- 180 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>180 días</h2>
+        <div class="price">35,00 €</div>
         <div class="description">6 meses de rendimiento sin preocuparte.</div>
         <div class="stock" data-duration="180">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 180 días">
-          <input type="hidden" name="amount" value="35.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 180 días" />
+          <input type="hidden" name="amount" value="35.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
 
-      <!-- 365 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>365 días</h2>
+        <div class="price">60,00 €</div>
         <div class="description">La opción definitiva para usuarios fieles.</div>
         <div class="stock" data-duration="365">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 365 días">
-          <input type="hidden" name="amount" value="60.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 365 días" />
+          <input type="hidden" name="amount" value="60.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
