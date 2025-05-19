@@ -54,7 +54,7 @@
 
     .form-container {
       position: absolute;
-      top: 270px; /* Puedes cambiar este valor para mover el formulario */
+      top: 270px;
       left: 50%;
       transform: translateX(-50%);
       background-color: #111;
@@ -119,7 +119,7 @@
   <!-- FORMULARIO -->
   <div class="form-container">
     <h2>Crear cuenta</h2>
-    <form action="#" method="post">
+    <form id="registerForm">
       <input type="text" name="username" placeholder="Nombre de usuario" required>
       <input type="email" name="email" placeholder="Correo electrónico" required>
       <input type="password" name="password" placeholder="Contraseña" required>
@@ -127,6 +127,42 @@
       <button type="submit">Registrarse</button>
     </form>
   </div>
+
+  <!-- SCRIPT REGISTRO FUNCIONAL -->
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const username = document.querySelector('input[name="username"]').value;
+      const email = document.querySelector('input[name="email"]').value;
+      const password = document.querySelector('input[name="password"]').value;
+      const confirmPassword = document.querySelector('input[name="confirm_password"]').value;
+
+      if (password !== confirmPassword) {
+        alert("Las contraseñas no coinciden.");
+        return;
+      }
+
+      try {
+        const response = await fetch("https://TU_BACKEND_URL/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, email, password })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert("Registro exitoso. Ya puedes iniciar sesión.");
+          window.location.href = "login.html"; // o la página que prefieras
+        } else {
+          alert(result.message || "Error en el registro.");
+        }
+      } catch (error) {
+        alert("No se pudo conectar con el servidor.");
+      }
+    });
+  </script>
 
 </body>
 </html>
