@@ -15,16 +15,34 @@
     }
 
     header {
-      text-align: center;
-      padding: 20px 0;
+      background-color: #0a0a0a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px 10px 40px;
+      box-sizing: border-box;
+    }
+
+    .banner-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
     }
 
     .banner {
-      width: 100%;
-      max-width: 1000px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
+      height: 100px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .register-link a {
+      color: #ff2b2b;
+      text-decoration: none;
+      border: 1px solid #ff2b2b;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
     }
 
     main {
@@ -128,13 +146,22 @@
   </style>
 </head>
 <body>
+
+  <!-- CABECERA -->
   <header>
-    <img src="banner.png" alt="Arceus Cheats" class="banner" />
+    <div class="banner-container">
+      <img src="banner.png" alt="Arceus Cheats" class="banner" />
+    </div>
+    <div class="register-link">
+      <a href="register.html">Registrarse</a>
+    </div>
   </header>
 
+  <!-- CONTENIDO PRINCIPAL -->
   <main>
     <div class="grid">
-      <!-- Tarjetas de producto ordenadas por precio -->
+      <!-- TARJETAS DE PRODUCTO -->
+
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>2 días</h2>
@@ -230,6 +257,7 @@
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
+
     </div>
   </main>
 
@@ -268,5 +296,6 @@
       checkStock(duration, stockEl, button);
     });
   </script>
+
 </body>
 </html>
