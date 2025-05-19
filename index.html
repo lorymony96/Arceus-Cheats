@@ -18,18 +18,23 @@
 
     header {
       background-color: #111;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 20px;
+      position: relative;
       box-shadow: 0 2px 10px #000;
     }
 
-    header h1 {
-      margin: 0;
+    .title {
+      text-align: center;
       font-size: 2rem;
       color: #ff2b2b;
       letter-spacing: 1px;
+      margin: 0;
+    }
+
+    .register-link {
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
 
     .register-link a {
@@ -127,7 +132,7 @@
 </head>
 <body>
   <header>
-    <h1>Arceus Cheats</h1>
+    <h1 class="title">Arceus Cheats</h1>
     <div class="register-link">
       <a href="register.html">Registrarse</a>
     </div>
