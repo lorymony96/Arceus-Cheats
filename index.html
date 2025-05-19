@@ -16,6 +16,7 @@
       align-items: center;
       min-height: 100vh;
     }
+
     header {
       background-color: #111;
       padding: 20px;
@@ -23,26 +24,29 @@
       width: 100%;
       box-shadow: 0 2px 10px #000;
     }
+
     header h1 {
       margin: 0;
       font-size: 2rem;
       color: #ff2b2b;
       letter-spacing: 1px;
     }
+
     main {
       flex: 1;
       display: flex;
       justify-content: center;
       padding: 40px 20px;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 30px;
       max-width: 1200px;
       width: 100%;
-      justify-content: center;
     }
+
     .product {
       background-color: #111;
       border: 1px solid #ff2b2b;
@@ -50,34 +54,48 @@
       padding: 25px;
       text-align: center;
       box-shadow: 0 0 10px #ff2b2b;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 350px;
       transition: transform 0.2s ease;
     }
+
     .product:hover {
       transform: scale(1.03);
     }
+
     .product img {
       width: 60px;
       margin-bottom: 15px;
+      align-self: center;
     }
+
     .product h2 {
-      margin: 10px 0;
+      margin: 10px 0 5px;
       font-size: 1.3rem;
       color: #ff2b2b;
     }
-    .price {
-      color: #ff2b2b;
-      font-weight: bold;
+
+    .product .price {
       font-size: 1.1rem;
+      color: #ff4f4f;
+      margin-bottom: 10px;
     }
-    .description {
+
+    .product p {
       font-size: 0.9rem;
       color: #ccc;
-      margin: 10px 0 5px;
+      margin-bottom: 15px;
+      flex-grow: 1;
     }
+
     .stock {
       font-size: 1rem;
-      margin: 15px 0;
+      margin: 10px 0;
+      font-weight: bold;
     }
+
     .buyBtn {
       background-color: #ff2b2b;
       border: none;
@@ -87,6 +105,7 @@
       color: white;
       cursor: pointer;
     }
+
     .buyBtn:disabled {
       background-color: grey;
       cursor: not-allowed;
@@ -99,12 +118,12 @@
   </header>
   <main>
     <div class="grid">
-      <!-- Productos -->
+      <!-- Tarjetas de producto -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 2 días</h2>
         <div class="price">3,00 €</div>
-        <p class="description">Ideal para probar el aimbot durante un fin de semana.</p>
+        <p>Ideal para probar el aimbot durante un fin de semana.</p>
         <div class="stock" data-duration="2">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
@@ -120,12 +139,12 @@
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 1 semana</h2>
         <div class="price">5,00 €</div>
-        <p class="description">Perfecto para partidas intensas durante toda la semana.</p>
+        <p>Perfecto para partidas intensas durante toda la semana.</p>
         <div class="stock" data-duration="7">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
           <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 7 días">
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 1 semana">
           <input type="hidden" name="amount" value="5.00">
           <input type="hidden" name="currency_code" value="EUR">
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
@@ -136,12 +155,12 @@
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 1 mes</h2>
         <div class="price">12,00 €</div>
-        <p class="description">Usa Arceus Aimbot sin límites durante 30 días.</p>
+        <p>Usa Arceus Aimbot sin límites durante 30 días.</p>
         <div class="stock" data-duration="30">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
           <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 30 días">
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 1 mes">
           <input type="hidden" name="amount" value="12.00">
           <input type="hidden" name="currency_code" value="EUR">
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
@@ -152,12 +171,12 @@
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 3 meses</h2>
         <div class="price">20,00 €</div>
-        <p class="description">Elige esta opción si buscas rendimiento prolongado con ahorro.</p>
+        <p>Elige esta opción si buscas rendimiento prolongado con ahorro.</p>
         <div class="stock" data-duration="90">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
           <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 90 días">
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 3 meses">
           <input type="hidden" name="amount" value="20.00">
           <input type="hidden" name="currency_code" value="EUR">
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
@@ -168,12 +187,12 @@
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 6 meses</h2>
         <div class="price">35,00 €</div>
-        <p class="description">Medio año de ventaja absoluta. Recomendado para jugadores activos.</p>
+        <p>Medio año de ventaja absoluta. Recomendado para jugadores activos.</p>
         <div class="stock" data-duration="180">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
           <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 180 días">
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 6 meses">
           <input type="hidden" name="amount" value="35.00">
           <input type="hidden" name="currency_code" value="EUR">
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
@@ -184,12 +203,12 @@
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>Licencia de 1 año</h2>
         <div class="price">60,00 €</div>
-        <p class="description">Acceso completo durante todo un año. Ahorro y comodidad total.</p>
+        <p>Acceso completo durante todo un año. Ahorro y comodidad total.</p>
         <div class="stock" data-duration="365">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
           <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 365 días">
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 1 año">
           <input type="hidden" name="amount" value="60.00">
           <input type="hidden" name="currency_code" value="EUR">
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
@@ -197,6 +216,7 @@
       </div>
     </div>
   </main>
+
   <script>
     async function checkStock(duration, stockElement, button) {
       try {
@@ -206,18 +226,14 @@
           body: JSON.stringify({ duration_days: duration })
         });
         const data = await response.json();
-        if (data.available) {
-          stockElement.textContent = "Stock disponible";
-          button.disabled = false;
-        } else {
-          stockElement.textContent = "Producto agotado";
-          button.disabled = true;
-        }
-      } catch (error) {
+        stockElement.textContent = data.available ? "Stock disponible" : "Producto agotado";
+        button.disabled = !data.available;
+      } catch {
         stockElement.textContent = "Error al conectar";
         button.disabled = true;
       }
     }
+
     document.querySelectorAll(".stock").forEach(stockEl => {
       const duration = parseInt(stockEl.dataset.duration);
       const button = stockEl.parentElement.querySelector(".buyBtn");
