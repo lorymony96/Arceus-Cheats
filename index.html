@@ -15,18 +15,20 @@
     }
 
     header {
+      width: 100%;
       background-color: #0a0a0a;
+    }
+
+    .top-bar {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 40px 10px 40px;
-      box-sizing: border-box;
+      justify-content: flex-end;
+      padding: 10px 40px 0 40px;
     }
 
     .banner-container {
       display: flex;
       justify-content: center;
-      width: 100%;
+      padding: 10px 0 0;
     }
 
     .banner {
@@ -149,18 +151,19 @@
 
   <!-- CABECERA -->
   <header>
+    <div class="top-bar">
+      <div class="register-link">
+        <a href="register.html">Registrarse</a>
+      </div>
+    </div>
     <div class="banner-container">
       <img src="banner.png" alt="Arceus Cheats" class="banner" />
-    </div>
-    <div class="register-link">
-      <a href="register.html">Registrarse</a>
     </div>
   </header>
 
   <!-- CONTENIDO PRINCIPAL -->
   <main>
     <div class="grid">
-      <!-- TARJETAS DE PRODUCTO -->
 
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
