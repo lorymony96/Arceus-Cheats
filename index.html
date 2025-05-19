@@ -18,23 +18,23 @@
       position: relative;
       background-color: #0a0a0a;
       text-align: center;
-      padding: 20px 0 10px 0;
+      padding: 10px 0;
+      z-index: 1;
     }
 
     .banner {
-  max-height: 380px;  /* Aumenta tamaño sin deformar */
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  margin-top: 10px;
-}
-
-
+      max-height: 130px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      margin-top: 10px;
+    }
 
     .register-link {
       position: absolute;
-      top: 20px;
-      right: 40px;
+      top: 15px;
+      right: 30px;
+      z-index: 3;
     }
 
     .register-link a {
@@ -50,15 +50,20 @@
     main {
       display: flex;
       justify-content: center;
-      padding: 30px 10px;
+      padding: 0 10px 30px;
+      position: relative;
+      z-index: 2;
     }
 
     .grid {
+      margin-top: -40px; /* Subir las tarjetas hacia el banner */
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 15px;
       max-width: 900px;
       width: 100%;
+      position: relative;
+      z-index: 2;
     }
 
     @media (max-width: 900px) {
@@ -154,6 +159,7 @@
 </head>
 <body>
 
+  <!-- CABECERA -->
   <header>
     <div class="register-link">
       <a href="register.html">Registrarse</a>
@@ -161,10 +167,11 @@
     <img src="banner.png" alt="Arceus Cheats" class="banner" />
   </header>
 
+  <!-- TARJETAS -->
   <main>
     <div class="grid">
-      <!-- Tarjetas de producto -->
-      <!-- 1 -->
+
+      <!-- Tarjeta 2 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>2 días</h2>
@@ -172,16 +179,16 @@
         <div class="description">Ideal para probar el cheat sin compromiso.</div>
         <div class="stock" data-duration="2">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 2 días">
-          <input type="hidden" name="amount" value="3.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 2 días" />
+          <input type="hidden" name="amount" value="3.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
 
-      <!-- 2 -->
+      <!-- Tarjeta 7 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>7 días</h2>
@@ -189,16 +196,16 @@
         <div class="description">Acceso completo durante toda una semana.</div>
         <div class="stock" data-duration="7">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 7 días">
-          <input type="hidden" name="amount" value="5.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 7 días" />
+          <input type="hidden" name="amount" value="5.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
 
-      <!-- 3 -->
+      <!-- Tarjeta 30 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>30 días</h2>
@@ -206,16 +213,16 @@
         <div class="description">Para jugadores constantes que quieren rendimiento.</div>
         <div class="stock" data-duration="30">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 30 días">
-          <input type="hidden" name="amount" value="12.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 30 días" />
+          <input type="hidden" name="amount" value="12.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
 
-      <!-- 4 -->
+      <!-- Tarjeta 90 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>90 días</h2>
@@ -223,16 +230,16 @@
         <div class="description">Mejor precio por día para uso continuo.</div>
         <div class="stock" data-duration="90">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 90 días">
-          <input type="hidden" name="amount" value="20.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 90 días" />
+          <input type="hidden" name="amount" value="20.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
 
-      <!-- 5 -->
+      <!-- Tarjeta 180 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>180 días</h2>
@@ -240,16 +247,16 @@
         <div class="description">6 meses de rendimiento sin preocuparte.</div>
         <div class="stock" data-duration="180">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 180 días">
-          <input type="hidden" name="amount" value="35.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 180 días" />
+          <input type="hidden" name="amount" value="35.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
 
-      <!-- 6 -->
+      <!-- Tarjeta 365 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>365 días</h2>
@@ -257,14 +264,15 @@
         <div class="description">La opción definitiva para usuarios fieles.</div>
         <div class="stock" data-duration="365">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick">
-          <input type="hidden" name="business" value="arceuscheats@gmail.com">
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 365 días">
-          <input type="hidden" name="amount" value="60.00">
-          <input type="hidden" name="currency_code" value="EUR">
+          <input type="hidden" name="cmd" value="_xclick" />
+          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 365 días" />
+          <input type="hidden" name="amount" value="60.00" />
+          <input type="hidden" name="currency_code" value="EUR" />
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
+
     </div>
   </main>
 
