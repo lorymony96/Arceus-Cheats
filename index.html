@@ -16,6 +16,7 @@
       align-items: center;
       min-height: 100vh;
     }
+
     header {
       background-color: #111;
       padding: 20px;
@@ -23,20 +24,30 @@
       width: 100%;
       box-shadow: 0 2px 10px #000;
     }
+
     header h1 {
       margin: 0;
       font-size: 2rem;
       color: #ff2b2b;
       letter-spacing: 1px;
     }
+
     main {
       flex: 1;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      justify-items: center;
+      display: flex;
+      justify-content: center;
       padding: 40px 20px;
     }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      width: 100%;
+      justify-content: center;
+    }
+
     .product {
       background-color: #111;
       border: 1px solid #ff2b2b;
@@ -44,22 +55,29 @@
       padding: 25px;
       text-align: center;
       box-shadow: 0 0 10px #ff2b2b;
-      width: 100%;
-      max-width: 320px;
+      transition: transform 0.2s ease;
     }
+
+    .product:hover {
+      transform: scale(1.03);
+    }
+
     .product img {
       width: 60px;
       margin-bottom: 15px;
     }
+
     .product h2 {
       margin: 10px 0;
       font-size: 1.3rem;
       color: #ff2b2b;
     }
+
     .stock {
       font-size: 1rem;
       margin: 15px 0;
     }
+
     .buyBtn {
       background-color: #ff2b2b;
       border: none;
@@ -69,6 +87,7 @@
       color: white;
       cursor: pointer;
     }
+
     .buyBtn:disabled {
       background-color: grey;
       cursor: not-allowed;
@@ -80,89 +99,96 @@
     <h1>Arceus Cheats</h1>
   </header>
   <main>
-    <!-- Tarjetas de producto -->
-    <div class="product">
-      <img src="ARCEUS_ICON.ico" alt="Icono">
-      <h2>Licencia de 2 días</h2>
-      <div class="stock" data-duration="2">Cargando stock...</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="arceuscheats@gmail.com">
-        <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 2 días">
-        <input type="hidden" name="amount" value="3.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-      </form>
-    </div>
+    <div class="grid">
+      <!-- Licencia de 2 días -->
+      <div class="product">
+        <img src="ARCEUS_ICON.ico" alt="Icono">
+        <h2>Licencia de 2 días</h2>
+        <div class="stock" data-duration="2">Cargando stock...</div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="arceuscheats@gmail.com">
+          <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 2 días">
+          <input type="hidden" name="amount" value="3.00">
+          <input type="hidden" name="currency_code" value="EUR">
+          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
+        </form>
+      </div>
 
-    <div class="product">
-      <img src="ARCEUS_ICON.ico" alt="Icono">
-      <h2>Licencia de 1 semana</h2>
-      <div class="stock" data-duration="7">Cargando stock...</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="arceuscheats@gmail.com">
-        <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 1 semana">
-        <input type="hidden" name="amount" value="5.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-      </form>
-    </div>
+      <!-- Licencia de 1 semana -->
+      <div class="product">
+        <img src="ARCEUS_ICON.ico" alt="Icono">
+        <h2>Licencia de 1 semana</h2>
+        <div class="stock" data-duration="7">Cargando stock...</div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="arceuscheats@gmail.com">
+          <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 1 semana">
+          <input type="hidden" name="amount" value="5.00">
+          <input type="hidden" name="currency_code" value="EUR">
+          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
+        </form>
+      </div>
 
-    <div class="product">
-      <img src="ARCEUS_ICON.ico" alt="Icono">
-      <h2>Licencia de 1 mes</h2>
-      <div class="stock" data-duration="30">Cargando stock...</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="arceuscheats@gmail.com">
-        <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 1 mes">
-        <input type="hidden" name="amount" value="12.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-      </form>
-    </div>
+      <!-- Licencia de 1 mes -->
+      <div class="product">
+        <img src="ARCEUS_ICON.ico" alt="Icono">
+        <h2>Licencia de 1 mes</h2>
+        <div class="stock" data-duration="30">Cargando stock...</div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="arceuscheats@gmail.com">
+          <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 1 mes">
+          <input type="hidden" name="amount" value="12.00">
+          <input type="hidden" name="currency_code" value="EUR">
+          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
+        </form>
+      </div>
 
-    <div class="product">
-      <img src="ARCEUS_ICON.ico" alt="Icono">
-      <h2>Licencia de 3 meses</h2>
-      <div class="stock" data-duration="90">Cargando stock...</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="arceuscheats@gmail.com">
-        <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 3 meses">
-        <input type="hidden" name="amount" value="20.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-      </form>
-    </div>
+      <!-- Licencia de 3 meses -->
+      <div class="product">
+        <img src="ARCEUS_ICON.ico" alt="Icono">
+        <h2>Licencia de 3 meses</h2>
+        <div class="stock" data-duration="90">Cargando stock...</div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="arceuscheats@gmail.com">
+          <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 3 meses">
+          <input type="hidden" name="amount" value="20.00">
+          <input type="hidden" name="currency_code" value="EUR">
+          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
+        </form>
+      </div>
 
-    <div class="product">
-      <img src="ARCEUS_ICON.ico" alt="Icono">
-      <h2>Licencia de 6 meses</h2>
-      <div class="stock" data-duration="180">Cargando stock...</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="arceuscheats@gmail.com">
-        <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 6 meses">
-        <input type="hidden" name="amount" value="35.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-      </form>
-    </div>
+      <!-- Licencia de 6 meses -->
+      <div class="product">
+        <img src="ARCEUS_ICON.ico" alt="Icono">
+        <h2>Licencia de 6 meses</h2>
+        <div class="stock" data-duration="180">Cargando stock...</div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="arceuscheats@gmail.com">
+          <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 6 meses">
+          <input type="hidden" name="amount" value="35.00">
+          <input type="hidden" name="currency_code" value="EUR">
+          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
+        </form>
+      </div>
 
-    <div class="product">
-      <img src="ARCEUS_ICON.ico" alt="Icono">
-      <h2>Licencia de 1 año</h2>
-      <div class="stock" data-duration="365">Cargando stock...</div>
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-        <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="arceuscheats@gmail.com">
-        <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 1 año">
-        <input type="hidden" name="amount" value="60.00">
-        <input type="hidden" name="currency_code" value="EUR">
-        <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-      </form>
+      <!-- Licencia de 1 año -->
+      <div class="product">
+        <img src="ARCEUS_ICON.ico" alt="Icono">
+        <h2>Licencia de 1 año</h2>
+        <div class="stock" data-duration="365">Cargando stock...</div>
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+          <input type="hidden" name="cmd" value="_xclick">
+          <input type="hidden" name="business" value="arceuscheats@gmail.com">
+          <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 1 año">
+          <input type="hidden" name="amount" value="60.00">
+          <input type="hidden" name="currency_code" value="EUR">
+          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
+        </form>
+      </div>
     </div>
   </main>
 
