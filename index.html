@@ -72,7 +72,7 @@
       <div id="stockInfo" class="stock">Cargando stock...</div>
       <form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
         <input type="hidden" name="cmd" value="_xclick">
-        <input type="hidden" name="business" value="tu-correo-paypal@example.com">
+        <input type="hidden" name="business" value="arceuscheats@gmail.com">
         <input type="hidden" name="item_name" value="Licencia Arceus Cheats - 1 semana">
         <input type="hidden" name="amount" value="5.00">
         <input type="hidden" name="currency_code" value="EUR">
@@ -84,7 +84,7 @@
 
   <script>
     async function checkStock() {
-      const response = await fetch("https://tu-app-de-heroku.herokuapp.com/get_unused_key", {
+      const response = await fetch("https://keylicense-c11944d8dd8e.herokuapp.com/get_unused_key", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ duration_days: 7 })
