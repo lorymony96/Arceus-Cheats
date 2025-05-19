@@ -32,6 +32,19 @@
       letter-spacing: 1px;
     }
 
+    .register-link {
+      margin: 20px;
+    }
+
+    .register-link a {
+      color: #ff2b2b;
+      text-decoration: none;
+      border: 1px solid #ff2b2b;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
     main {
       flex: 1;
       display: flex;
@@ -59,6 +72,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      height: 100%;
     }
 
     .product:hover {
@@ -66,32 +80,26 @@
     }
 
     .product img {
-  width: 60px;
-  margin: 0 auto 15px auto;
-  display: block;
+      width: 60px;
+      margin: 0 auto 15px;
     }
 
     .product h2 {
-      margin: 10px 0 5px;
+      margin: 10px 0;
       font-size: 1.3rem;
       color: #ff2b2b;
     }
 
-    .product .price {
-      margin-bottom: 10px;
-      color: #ffb3b3;
-      font-size: 1rem;
-    }
-
-    .product p {
+    .description {
       font-size: 0.9rem;
-      margin: 0 0 10px 0;
+      color: #ccc;
+      margin-bottom: 5px;
+      min-height: 40px;
     }
 
     .stock {
       font-size: 1rem;
-      margin: 5px 0 15px 0;
-      font-weight: bold;
+      margin: 10px 0;
     }
 
     .buyBtn {
@@ -114,14 +122,18 @@
   <header>
     <h1>Arceus Cheats</h1>
   </header>
+
+  <div class="register-link">
+    <a href="register.html">Registrarse</a>
+  </div>
+
   <main>
     <div class="grid">
-      <!-- Licencia de 2 días -->
+      <!-- 2 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>Licencia de 2 días</h2>
-        <div class="price">3,00 €</div>
-        <p>Ideal para probar el aimbot durante un fin de semana.</p>
+        <h2>2 días</h2>
+        <div class="description">Ideal para probar el cheat sin compromiso.</div>
         <div class="stock" data-duration="2">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
@@ -133,12 +145,11 @@
         </form>
       </div>
 
-      <!-- Licencia de 7 días -->
+      <!-- 7 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>Licencia de 7 días</h2>
-        <div class="price">5,00 €</div>
-        <p>Perfecto para partidas intensas durante toda la semana.</p>
+        <h2>7 días</h2>
+        <div class="description">Acceso completo durante toda una semana.</div>
         <div class="stock" data-duration="7">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
@@ -150,12 +161,11 @@
         </form>
       </div>
 
-      <!-- Licencia de 30 días -->
+      <!-- 30 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>Licencia de 30 días</h2>
-        <div class="price">12,00 €</div>
-        <p>Usa Arceus Aimbot sin límites durante 30 días.</p>
+        <h2>30 días</h2>
+        <div class="description">Para jugadores constantes que quieren rendimiento.</div>
         <div class="stock" data-duration="30">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
@@ -167,12 +177,11 @@
         </form>
       </div>
 
-      <!-- Licencia de 90 días -->
+      <!-- 90 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>Licencia de 90 días</h2>
-        <div class="price">20,00 €</div>
-        <p>Elige esta opción si buscas rendimiento prolongado con ahorro.</p>
+        <h2>90 días</h2>
+        <div class="description">Mejor precio por día para uso continuo.</div>
         <div class="stock" data-duration="90">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
@@ -184,12 +193,11 @@
         </form>
       </div>
 
-      <!-- Licencia de 180 días -->
+      <!-- 180 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>Licencia de 180 días</h2>
-        <div class="price">35,00 €</div>
-        <p>Medio año de ventaja absoluta. Recomendado para jugadores activos.</p>
+        <h2>180 días</h2>
+        <div class="description">6 meses de rendimiento sin preocuparte.</div>
         <div class="stock" data-duration="180">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
@@ -201,12 +209,11 @@
         </form>
       </div>
 
-      <!-- Licencia de 365 días -->
+      <!-- 365 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>Licencia de 365 días</h2>
-        <div class="price">60,00 €</div>
-        <p>Acceso completo durante todo un año. Ahorro y comodidad total.</p>
+        <h2>365 días</h2>
+        <div class="description">La opción definitiva para usuarios fieles.</div>
         <div class="stock" data-duration="365">Cargando stock...</div>
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
           <input type="hidden" name="cmd" value="_xclick">
@@ -251,4 +258,3 @@
   </script>
 </body>
 </html>
-
