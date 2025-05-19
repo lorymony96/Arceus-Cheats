@@ -37,22 +37,20 @@
       border: 1px solid #ff2b2b;
       padding: 8px 16px;
       border-radius: 5px;
-      font-family: 'Orbitron', sans-serif;
     }
 
     main {
       display: flex;
       justify-content: center;
-      padding: 40px 20px;
+      padding: 30px 10px;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 1000px;
+      gap: 15px;
+      max-width: 900px;
       width: 100%;
-      margin: 0 auto;
     }
 
     @media (max-width: 900px) {
@@ -70,58 +68,57 @@
     .product {
       background-color: #111;
       border: 1px solid #ff2b2b;
-      border-radius: 15px;
-      padding: 15px;
+      border-radius: 12px;
+      padding: 12px;
       text-align: center;
-      box-shadow: 0 0 10px #ff2b2b;
+      box-shadow: 0 0 8px #ff2b2b;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       transition: transform 0.2s ease;
-      min-height: 270px;
-      max-width: 260px;
+      max-width: 250px;
       margin: 0 auto;
     }
 
     .product:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
 
     .product img {
-      width: 40px;
-      margin: 0 auto 6px;
+      width: 36px;
+      margin-bottom: 6px;
     }
 
     .product h2 {
-      margin: 5px 0 4px;
-      font-size: 1rem;
+      margin: 2px 0;
+      font-size: 0.95rem;
       color: #ff2b2b;
     }
 
     .price {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #ffcccc;
-      margin-bottom: 6px;
+      margin: 2px 0 4px;
     }
 
     .description {
       font-size: 0.75rem;
       color: #ccc;
-      margin-bottom: 8px;
-      min-height: 28px;
+      margin: 4px 0 6px;
+      min-height: 24px;
     }
 
     .stock {
-      font-size: 0.85rem;
-      margin-bottom: 10px;
+      font-size: 0.75rem;
+      margin-bottom: 8px;
       font-weight: bold;
     }
 
     .buyBtn {
       background-color: #ff2b2b;
       border: none;
-      padding: 6px 14px;
-      font-size: 0.85rem;
+      padding: 6px 10px;
+      font-size: 0.75rem;
       border-radius: 6px;
       color: white;
       cursor: pointer;
@@ -143,7 +140,7 @@
 
   <main>
     <div class="grid">
-      <!-- Tarjetas ordenadas por precio -->
+      <!-- 2 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>2 días</h2>
@@ -160,6 +157,7 @@
         </form>
       </div>
 
+      <!-- 7 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>7 días</h2>
@@ -176,6 +174,7 @@
         </form>
       </div>
 
+      <!-- 30 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>30 días</h2>
@@ -192,6 +191,7 @@
         </form>
       </div>
 
+      <!-- 90 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>90 días</h2>
@@ -208,6 +208,7 @@
         </form>
       </div>
 
+      <!-- 180 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>180 días</h2>
@@ -224,6 +225,7 @@
         </form>
       </div>
 
+      <!-- 365 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>365 días</h2>
