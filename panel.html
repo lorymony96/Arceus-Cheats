@@ -41,7 +41,7 @@
       z-index: 3;
     }
 
-    .register-link a {
+    .register-link a, .register-link button {
       color: #ff2b2b;
       text-decoration: none;
       border: 1px solid #ff2b2b;
@@ -49,6 +49,9 @@
       border-radius: 5px;
       font-size: 0.85rem;
       margin-left: 10px;
+      background: none;
+      font-family: 'Orbitron', sans-serif;
+      cursor: pointer;
     }
 
     main {
@@ -104,7 +107,7 @@
 <body>
 
   <header>
-    <div class="register-link"></div>
+    <div class="register-link" id="nav-links"></div>
     <img src="banner.png" alt="Arceus Cheats" class="banner" />
   </header>
 
@@ -116,16 +119,16 @@
   </main>
 
   <script>
-    // Mostrar navegación
     const userLogged = localStorage.getItem("usuarioLogueado") === "true";
     const email = localStorage.getItem("userEmail") || "";
-    const container = document.querySelector(".register-link");
+    const container = document.getElementById("nav-links");
 
     if (container) {
       if (userLogged) {
         container.innerHTML = `
           <a href="index.html">Tienda</a>
           <a href="Inicio.html">Inicio</a>
+          <button onclick="cerrarSesion()">Cerrar sesión</button>
         `;
       } else {
         container.innerHTML = `
@@ -136,7 +139,12 @@
       }
     }
 
-    // Mostrar licencias desde Heroku
+    function cerrarSesion() {
+      localStorage.removeItem("usuarioLogueado");
+      localStorage.removeItem("userEmail");
+      window.location.href = "Inicio.html";
+    }
+
     const licenseContent = document.getElementById("license-content");
 
     async function fetchLicenses() {
