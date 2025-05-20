@@ -60,32 +60,37 @@
       text-align: center;
     }
 
-    .license-card {
+    .license-box {
       background-color: #111;
       border: 2px solid #ff2b2b;
-      border-radius: 12px;
+      border-radius: 15px;
       padding: 30px;
       box-shadow: 0 0 15px #ff2b2b;
       width: 90%;
       max-width: 600px;
-      text-align: center;
     }
 
-    .license-title {
+    .license-box h2 {
       color: #ff2b2b;
-      font-size: 1.2rem;
       margin-bottom: 20px;
     }
 
-    .license-key {
+    .key {
+      background-color: #0f0f0f;
       color: #00ff00;
-      font-size: 1rem;
-      background-color: #222;
       border: 1px dashed #00ff00;
-      border-radius: 6px;
-      padding: 10px;
-      margin-top: 10px;
+      padding: 10px 20px;
+      border-radius: 8px;
       display: inline-block;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    .no-license {
+      color: #ff3c3c;
+      font-size: 0.95rem;
+      font-weight: bold;
+      margin-top: 20px;
     }
 
     @media (max-width: 600px) {
@@ -98,24 +103,23 @@
 </head>
 <body>
 
-  <!-- CABECERA -->
   <header>
     <div class="register-link"></div>
     <img src="banner.png" alt="Arceus Cheats" class="banner" />
   </header>
 
-  <!-- PANEL DE USUARIO -->
   <main>
-    <div class="license-card">
-      <div class="license-title">TUS LICENCIAS:</div>
-      <div class="license-key" id="claveUsuario">XXXX-XXXX-XXXX-XXXX</div>
+    <div class="license-box">
+      <h2>TUS LICENCIAS:</h2>
+      <div id="license-content"></div>
     </div>
   </main>
 
   <script>
-    // Mostrar menú según sesión
+    // Mostrar botones de navegación
     const userLogged = localStorage.getItem("usuarioLogueado") === "true";
     const container = document.querySelector(".register-link");
+
     if (container) {
       if (userLogged) {
         container.innerHTML = `
@@ -131,11 +135,16 @@
       }
     }
 
-    // Aquí deberías reemplazar esto por una llamada al backend que devuelva la key real
-    const keyEjemplo = localStorage.getItem("user_license") || "XXXX-XXXX-XXXX-XXXX";
-    document.getElementById("claveUsuario").textContent = keyEjemplo;
+    // Mostrar la licencia si existe
+    const license = localStorage.getItem("user_license");
+    const content = document.getElementById("license-content");
+
+    if (license) {
+      content.innerHTML = `<div class="key">${license}</div>`;
+    } else {
+      content.innerHTML = `<div class="no-license">No tienes licencias compradas.</div>`;
+    }
   </script>
 
 </body>
 </html>
-
