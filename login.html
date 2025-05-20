@@ -114,6 +114,15 @@
       margin-top: 15px;
     }
 
+    .mensaje-recuperacion {
+      color: #00ff00;
+      font-size: 0.85rem;
+      margin-top: 10px;
+      text-align: center;
+      font-weight: bold;
+      line-height: 1.4;
+    }
+
     @media (max-width: 600px) {
       .register-link {
         top: 10px;
@@ -144,7 +153,7 @@
     <div id="resetContainer">
       <input type="email" id="resetEmail" placeholder="Introduce tu correo" />
       <button onclick="enviarReset()">Enviar recuperación</button>
-      <div id="mensaje-reset" style="margin-top: 10px;"></div>
+      <div id="mensaje-reset"></div>
     </div>
   </div>
 
@@ -156,10 +165,9 @@
     async function enviarReset() {
       const email = document.getElementById("resetEmail").value.trim();
       const mensaje = document.getElementById("mensaje-reset");
-      mensaje.textContent = "";
+      mensaje.innerHTML = "";
       if (!email) {
-        mensaje.textContent = "Introduce tu correo.";
-        mensaje.style.color = "orange";
+        mensaje.innerHTML = `<div class="mensaje-recuperacion" style="color: orange;">Introduce tu correo.</div>`;
         return;
       }
 
@@ -172,15 +180,16 @@
 
         const result = await res.json();
         if (result.success) {
-          mensaje.textContent = "✅ Revisa tu correo para recuperar la contraseña (Revisa la carpeta de spam).";
-          mensaje.style.color = "#00ff00";
+          mensaje.innerHTML = `
+            <div class="mensaje-recuperacion">
+              ✅ Revisa tu correo para recuperar la contraseña<br>
+              (Revisa la carpeta de spam)
+            </div>`;
         } else {
-          mensaje.textContent = "❌ " + (result.message || "Error al enviar el correo.");
-          mensaje.style.color = "red";
+          mensaje.innerHTML = `<div class="mensaje-recuperacion" style="color: red;">❌ ${result.message || "Error al enviar el correo."}</div>`;
         }
       } catch (e) {
-        mensaje.textContent = "❌ Error de conexión con el servidor.";
-        mensaje.style.color = "red";
+        mensaje.innerHTML = `<div class="mensaje-recuperacion" style="color: red;">❌ Error de conexión con el servidor.</div>`;
       }
     }
   </script>
