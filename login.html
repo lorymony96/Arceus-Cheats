@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar Sesión - Arceus Cheats</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background-color: #0a0a0a;
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    header {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      background-color: #0a0a0a;
+      text-align: center;
+      width: 100%;
+    }
+
+    .banner {
+      position: absolute;
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-height: 580px;
+      width: auto;
+      object-fit: contain;
+      z-index: 0;
+    }
+
+    .register-link {
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      z-index: 3;
+    }
+
+    .register-link a {
+      color: #ff2b2b;
+      text-decoration: none;
+      border: 1px solid #ff2b2b;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-size: 0.85rem;
+    }
+
+    .form-container {
+      position: absolute;
+      top: 270px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #111;
+      border: 2px solid #ff2b2b;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 15px #ff2b2b;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      z-index: 3;
+    }
+
+    h2 {
+      color: #ff2b2b;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #ff2b2b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    button:hover {
+      background-color: #e60000;
+    }
+
+    .link {
+      display: block;
+      margin-top: 10px;
+      color: #ff2b2b;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    #mensaje-login {
+      margin-top: 10px;
+      font-size: 0.85rem;
+    }
+
+    #resetContainer {
+      display: none;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .register-link {
+        top: 10px;
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="register-link">
+      <a href="register.html">Registrarse</a>
+    </div>
+    <img src="banner.png" alt="Arceus Cheats" class="banner" />
+  </header>
+
+  <div class="form-container">
+    <h2>Iniciar sesión</h2>
+    <form id="loginForm">
+      <input type="email" name="email" placeholder="Correo electrónico" required />
+      <input type="password" name="password" placeholder="Contraseña" required />
+      <button type="submit">Entrar</button>
+      <span class="link" onclick="mostrarReset()">¿Olvidaste tu contraseña?</span>
+      <div id="mensaje-login"></div>
+    </form>
+
+    <div id="resetContainer">
+      <input type="email" id="resetEmail" placeholder="Introduce tu correo" />
+      <button onclick="enviarReset()">Enviar recuperación</button>
+      <div id="mensaje-reset" style="margin-top: 10px;"></div>
+    </div>
+  </div>
+
+  <script>
+    function mostrarReset() {
+      document.getElementById("resetContainer").style.display = "block";
+    }
+
+    async function enviarReset() {
+      const email = document.getElementById("resetEmail").value.trim();
+      const mensaje = document.getElementById("mensaje-reset");
+      mensaje.textContent = "";
+      if (!email) {
+        mensaje.textContent = "Introduce tu correo.";
+        mensaje.style.color = "orange";
+        return;
+      }
+
+      try {
+        const res = await fetch("https://keylicense-c11944d8dd8e.herokuapp.com/request_reset", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email })
+        });
+
+        const result = await res.json();
+        if (result.success) {
+          mensaje.textContent = "✅ Revisa tu correo para recuperar la contraseña.";
+          mensaje.style.color = "#00ff00";
+        } else {
+          mensaje.textContent = "❌ " + (result.message || "Error al enviar el correo.");
+          mensaje.style.color = "red";
+        }
+      } catch (e) {
+        mensaje.textContent = "❌ Error de conexión con el servidor.";
+        mensaje.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>
