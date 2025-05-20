@@ -138,12 +138,6 @@
       background-color: grey;
       cursor: not-allowed;
     }
-    @media (max-width: 600px) {
-      .buyBtn {
-        font-size: 0.85rem;
-        padding: 10px;
-      }
-    }
   </style>
 </head>
 <body>
@@ -154,96 +148,62 @@
   </header>
 
   <main>
-    <div class="grid">
-      <!-- Tarjeta 7 días -->
-      <div class="product">
-        <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>7 días</h2>
-        <div class="price">5,00 €</div>
-        <div class="description">Acceso completo durante toda una semana.</div>
-        <div class="stock" data-duration="7">Cargando stock...</div>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick" />
-          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 7 días" />
-          <input type="hidden" name="amount" value="5.00" />
-          <input type="hidden" name="currency_code" value="EUR" />
-          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-        </form>
-      </div>
-
-      <!-- Tarjeta 30 días -->
-      <div class="product">
-        <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>30 días</h2>
-        <div class="price">12,00 €</div>
-        <div class="description">Para jugadores constantes que quieren rendimiento.</div>
-        <div class="stock" data-duration="30">Cargando stock...</div>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick" />
-          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 30 días" />
-          <input type="hidden" name="amount" value="12.00" />
-          <input type="hidden" name="currency_code" value="EUR" />
-          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-        </form>
-      </div>
-
-      <!-- Tarjeta 90 días -->
-      <div class="product">
-        <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>90 días</h2>
-        <div class="price">20,00 €</div>
-        <div class="description">Mejor precio por día para uso continuo.</div>
-        <div class="stock" data-duration="90">Cargando stock...</div>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick" />
-          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 90 días" />
-          <input type="hidden" name="amount" value="20.00" />
-          <input type="hidden" name="currency_code" value="EUR" />
-          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-        </form>
-      </div>
-
-      <!-- Tarjeta 180 días -->
-      <div class="product">
-        <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>180 días</h2>
-        <div class="price">35,00 €</div>
-        <div class="description">6 meses de rendimiento sin preocuparte.</div>
-        <div class="stock" data-duration="180">Cargando stock...</div>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick" />
-          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 180 días" />
-          <input type="hidden" name="amount" value="35.00" />
-          <input type="hidden" name="currency_code" value="EUR" />
-          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-        </form>
-      </div>
-
-      <!-- Tarjeta 365 días -->
-      <div class="product">
-        <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>365 días</h2>
-        <div class="price">60,00 €</div>
-        <div class="description">La opción definitiva para usuarios fieles.</div>
-        <div class="stock" data-duration="365">Cargando stock...</div>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick" />
-          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 365 días" />
-          <input type="hidden" name="amount" value="60.00" />
-          <input type="hidden" name="currency_code" value="EUR" />
-          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-        </form>
-      </div>
-
-    </div>
+    <div class="grid" id="product-grid"></div>
   </main>
 
+  <div id="mensaje-alerta" style="
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    border: 2px solid #ff2b2b;
+    color: #ff2b2b;
+    padding: 10px 20px;
+    border-radius: 8px;
+    z-index: 9999;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    text-align: center;
+    box-shadow: 0 0 10px #ff2b2b;
+  ">
+    ⚠️ Debes registrarte o iniciar sesión para comprar.
+  </div>
+
   <script>
+    const productos = [
+      { duracion: 2, precio: "3,00 €", texto: "Ideal para probar el cheat sin compromiso." },
+      { duracion: 7, precio: "5,00 €", texto: "Acceso completo durante toda una semana." },
+      { duracion: 30, precio: "12,00 €", texto: "Para jugadores constantes que quieren rendimiento." },
+      { duracion: 90, precio: "20,00 €", texto: "Mejor precio por día para uso continuo." },
+      { duracion: 180, precio: "35,00 €", texto: "6 meses de rendimiento sin preocuparte." },
+      { duracion: 365, precio: "60,00 €", texto: "La opción definitiva para usuarios fieles." },
+    ];
+
+    const grid = document.getElementById("product-grid");
+
+    productos.forEach(producto => {
+      const html = `
+        <div class="product">
+          <img src="ARCEUS_ICON.ico" alt="Icono">
+          <h2>${producto.duracion} días</h2>
+          <div class="price">${producto.precio}</div>
+          <div class="description">${producto.texto}</div>
+          <div class="stock" data-duration="${producto.duracion}">Cargando stock...</div>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+            <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - ${producto.duracion} días" />
+            <input type="hidden" name="amount" value="${parseFloat(producto.precio)}" />
+            <input type="hidden" name="currency_code" value="EUR" />
+            <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
+          </form>
+        </div>
+      `;
+      grid.insertAdjacentHTML("beforeend", html);
+    });
+
     async function checkStock(duration, stockElement, button) {
       try {
         const response = await fetch("https://keylicense-c11944d8dd8e.herokuapp.com/get_unused_key", {
@@ -251,7 +211,6 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ duration_days: duration })
         });
-
         const data = await response.json();
         if (data.available) {
           stockElement.textContent = "Stock disponible";
@@ -264,10 +223,9 @@
           stockElement.classList.remove("available");
           button.disabled = true;
         }
-      } catch (error) {
+      } catch {
         stockElement.textContent = "Error al conectar";
         stockElement.classList.add("unavailable");
-        stockElement.classList.remove("available");
         button.disabled = true;
       }
     }
@@ -276,38 +234,40 @@
     const container = document.querySelector(".register-link");
 
     if (container) {
-      if (userLogged) {
-        container.innerHTML = `
-          <a href="index.html">Tienda</a>
-          <a href="Inicio.html">Inicio</a>
-          <a href="panel.html">Panel de usuario</a>
-        `;
-      } else {
-        container.innerHTML = `
-          <a href="Inicio.html">Inicio</a>
-          <a href="register.html">Registrarse</a>
-          <a href="login.html">Iniciar sesión</a>
-        `;
-      }
+      container.innerHTML = userLogged ? `
+        <a href="index.html">Tienda</a>
+        <a href="Inicio.html">Inicio</a>
+        <a href="panel.html">Panel de usuario</a>
+      ` : `
+        <a href="Inicio.html">Inicio</a>
+        <a href="register.html">Registrarse</a>
+        <a href="login.html">Iniciar sesión</a>
+      `;
     }
 
-    document.querySelectorAll(".stock").forEach(stockEl => {
-      const duration = parseInt(stockEl.dataset.duration);
-      const button = stockEl.parentElement.querySelector(".buyBtn");
-      checkStock(duration, stockEl, button);
-    });
-  </script>
+    setTimeout(() => {
+      document.querySelectorAll(".stock").forEach(stockEl => {
+        const duration = parseInt(stockEl.dataset.duration);
+        const button = stockEl.parentElement.querySelector(".buyBtn");
+        checkStock(duration, stockEl, button);
+      });
+    }, 100);
 
-  <script>
-    // Bloquear intento de compra si no ha iniciado sesión
-    document.querySelectorAll(".buyBtn").forEach(btn => {
-      btn.addEventListener("click", function (e) {
+    function mostrarMensajePersonalizado(texto) {
+      const alerta = document.getElementById("mensaje-alerta");
+      alerta.textContent = texto;
+      alerta.style.display = "block";
+      setTimeout(() => { alerta.style.display = "none"; }, 3500);
+    }
+
+    document.addEventListener("click", e => {
+      if (e.target.classList.contains("buyBtn")) {
         const isLogged = localStorage.getItem("usuarioLogueado") === "true";
         if (!isLogged) {
           e.preventDefault();
-          alert("⚠️ Debes registrarte o iniciar sesión para comprar.");
+          mostrarMensajePersonalizado("⚠️ Debes registrarte o iniciar sesión para comprar.");
         }
-      });
+      }
     });
   </script>
 
