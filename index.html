@@ -155,24 +155,7 @@
 
   <main>
     <div class="grid">
-      <!-- Aquí están tus tarjetas -->
-      <!-- Tarjeta 2 días -->
-      <div class="product">
-        <img src="ARCEUS_ICON.ico" alt="Icono">
-        <h2>2 días</h2>
-        <div class="price">3,00 €</div>
-        <div class="description">Ideal para probar el cheat sin compromiso.</div>
-        <div class="stock" data-duration="2">Cargando stock...</div>
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_xclick" />
-          <input type="hidden" name="business" value="arceuscheats@gmail.com" />
-          <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - 2 días" />
-          <input type="hidden" name="amount" value="3.00" />
-          <input type="hidden" name="currency_code" value="EUR" />
-          <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-        </form>
-      </div>
-<!-- Tarjeta 7 días -->
+      <!-- Tarjeta 7 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>7 días</h2>
@@ -256,7 +239,7 @@
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
-     
+
     </div>
   </main>
 
@@ -289,12 +272,6 @@
       }
     }
 
-    document.querySelectorAll(".stock").forEach(stockEl => {
-      const duration = parseInt(stockEl.dataset.duration);
-      const button = stockEl.parentElement.querySelector(".buyBtn");
-      checkStock(duration, stockEl, button);
-    });
-
     const userLogged = localStorage.getItem("usuarioLogueado") === "true";
     const container = document.querySelector(".register-link");
 
@@ -313,6 +290,25 @@
         `;
       }
     }
+
+    document.querySelectorAll(".stock").forEach(stockEl => {
+      const duration = parseInt(stockEl.dataset.duration);
+      const button = stockEl.parentElement.querySelector(".buyBtn");
+      checkStock(duration, stockEl, button);
+    });
+  </script>
+
+  <script>
+    // Bloquear intento de compra si no ha iniciado sesión
+    document.querySelectorAll(".buyBtn").forEach(btn => {
+      btn.addEventListener("click", function (e) {
+        const isLogged = localStorage.getItem("usuarioLogueado") === "true";
+        if (!isLogged) {
+          e.preventDefault();
+          alert("⚠️ Debes registrarte o iniciar sesión para comprar.");
+        }
+      });
+    });
   </script>
 
 </body>
