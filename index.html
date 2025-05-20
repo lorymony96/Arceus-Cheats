@@ -25,7 +25,7 @@
 
     .banner {
       position: absolute;
-      top: -180px; /* Mueve el banner hacia arriba */
+      top: -180px;
       left: 50%;
       transform: translateX(-50%);
       max-height: 580px;
@@ -49,6 +49,7 @@
       border-radius: 5px;
       font-family: 'Orbitron', sans-serif;
       font-size: 0.85rem;
+      margin-left: 10px;
     }
 
     main {
@@ -60,7 +61,7 @@
     }
 
     .grid {
-      margin-top: -50px; /* Superpone tarjetas sobre el banner */
+      margin-top: -50px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 15px;
@@ -167,9 +168,56 @@
   <header>
     <div class="register-link">
       <a href="register.html">Registrarse</a>
+      <a href="login.html">Iniciar sesión</a>
     </div>
     <img src="banner.png" alt="Arceus Cheats" class="banner" />
   </header>
+
+  <!-- TARJETAS -->
+  <main>
+    <div class="grid">
+      <!-- ... tus tarjetas (sin cambios) ... -->
+    </div>
+  </main>
+
+  <script>
+    async function checkStock(duration, stockElement, button) {
+      try {
+        const response = await fetch("https://keylicense-c11944d8dd8e.herokuapp.com/get_unused_key", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ duration_days: duration })
+        });
+
+        const data = await response.json();
+        if (data.available) {
+          stockElement.textContent = "Stock disponible";
+          stockElement.classList.add("available");
+          stockElement.classList.remove("unavailable");
+          button.disabled = false;
+        } else {
+          stockElement.textContent = "Producto agotado";
+          stockElement.classList.add("unavailable");
+          stockElement.classList.remove("available");
+          button.disabled = true;
+        }
+      } catch (error) {
+        stockElement.textContent = "Error al conectar";
+        stockElement.classList.add("unavailable");
+        stockElement.classList.remove("available");
+        button.disabled = true;
+      }
+    }
+
+    document.querySelectorAll(".stock").forEach(stockEl => {
+      const duration = parseInt(stockEl.dataset.duration);
+      const button = stockEl.parentElement.querySelector(".buyBtn");
+      checkStock(duration, stockEl, button);
+    });
+  </script>
+
+</body>
+</html>
 
   <!-- TARJETAS -->
   <main>
