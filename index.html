@@ -13,7 +13,6 @@
       color: white;
       overflow-x: hidden;
     }
-
     header {
       position: relative;
       height: 300px;
@@ -22,7 +21,6 @@
       text-align: center;
       z-index: 1;
     }
-
     .banner {
       position: absolute;
       top: -180px;
@@ -33,14 +31,12 @@
       object-fit: contain;
       z-index: 0;
     }
-
     .register-link {
       position: absolute;
       top: 15px;
       right: 30px;
       z-index: 3;
     }
-
     .register-link a {
       color: #ff2b2b;
       text-decoration: none;
@@ -50,7 +46,6 @@
       font-size: 0.85rem;
       margin-left: 10px;
     }
-
     main {
       display: flex;
       justify-content: center;
@@ -58,7 +53,6 @@
       position: relative;
       z-index: 2;
     }
-
     .grid {
       margin-top: -50px;
       display: grid;
@@ -67,24 +61,20 @@
       max-width: 900px;
       width: 100%;
     }
-
     @media (max-width: 900px) {
       .grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-
     @media (max-width: 600px) {
       .grid {
         grid-template-columns: 1fr;
       }
-
       .register-link {
         top: 10px;
         right: 10px;
       }
     }
-
     .product {
       background-color: #111;
       border: 1px solid #ff2b2b;
@@ -99,50 +89,41 @@
       max-width: 250px;
       margin: 0 auto;
     }
-
     .product:hover {
       transform: scale(1.02);
     }
-
     .product img {
       width: 36px;
       margin: 0 auto 6px;
       display: block;
     }
-
     .product h2 {
       margin: 2px 0;
       font-size: 0.95rem;
       color: #ff2b2b;
     }
-
     .price {
       font-size: 0.85rem;
       color: #ffcccc;
       margin: 2px 0 4px;
     }
-
     .description {
       font-size: 0.75rem;
       color: #ccc;
       margin: 4px 0 6px;
       min-height: 24px;
     }
-
     .stock {
       font-size: 0.75rem;
       margin-bottom: 8px;
       font-weight: bold;
     }
-
     .stock.available {
       color: #00ff00;
     }
-
     .stock.unavailable {
       color: #ff0000;
     }
-
     .buyBtn {
       background-color: #ff2b2b;
       border: none;
@@ -153,12 +134,10 @@
       cursor: pointer;
       width: 100%;
     }
-
     .buyBtn:disabled {
       background-color: grey;
       cursor: not-allowed;
     }
-
     @media (max-width: 600px) {
       .buyBtn {
         font-size: 0.85rem;
@@ -169,20 +148,14 @@
 </head>
 <body>
 
-  <!-- CABECERA -->
   <header>
-    <div class="register-link">
-      <a href="Inicio.html">Inicio</a>
-      <a href="register.html">Registrarse</a>
-      <a href="login.html">Iniciar sesión</a>
-    </div>
+    <div class="register-link"></div>
     <img src="banner.png" alt="Arceus Cheats" class="banner" />
   </header>
 
-  <!-- TARJETAS -->
   <main>
     <div class="grid">
-
+      <!-- Aquí están tus tarjetas -->
       <!-- Tarjeta 2 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
@@ -199,8 +172,7 @@
           <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
         </form>
       </div>
-
-      <!-- Tarjeta 7 días -->
+<!-- Tarjeta 7 días -->
       <div class="product">
         <img src="ARCEUS_ICON.ico" alt="Icono">
         <h2>7 días</h2>
@@ -287,8 +259,10 @@
 
     </div>
   </main>
+     
+    </div>
+  </main>
 
-  <!-- Script para comprobar stock -->
   <script>
     async function checkStock(duration, stockElement, button) {
       try {
@@ -323,6 +297,25 @@
       const button = stockEl.parentElement.querySelector(".buyBtn");
       checkStock(duration, stockEl, button);
     });
+
+    const userLogged = localStorage.getItem("usuarioLogueado") === "true";
+    const container = document.querySelector(".register-link");
+
+    if (container) {
+      if (userLogged) {
+        container.innerHTML = `
+          <a href="index.html">Tienda</a>
+          <a href="Inicio.html">Inicio</a>
+          <a href="panel.html">Panel de usuario</a>
+        `;
+      } else {
+        container.innerHTML = `
+          <a href="Inicio.html">Inicio</a>
+          <a href="register.html">Registrarse</a>
+          <a href="login.html">Iniciar sesión</a>
+        `;
+      }
+    }
   </script>
 
 </body>
