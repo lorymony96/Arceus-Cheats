@@ -182,7 +182,7 @@
 
         if (result.success) {
           localStorage.setItem("usuarioLogueado", "true");
-          localStorage.setItem("userEmail", email); // << AÑADIDO PARA PANEL.HTML
+          localStorage.setItem("user_email", email); // ✅ Importante para mostrar licencias
           window.location.href = "index.html";
         } else {
           mensajeDiv.textContent = "❌ " + (result.message || "Error en el inicio de sesión.");
