@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arceus Cheats</title>
+  <script src="https://js.stripe.com/v3/"></script>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
@@ -138,6 +139,23 @@
       background-color: grey;
       cursor: not-allowed;
     }
+    #mensaje-alerta {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1a1a1a;
+      border: 2px solid #ff2b2b;
+      color: #ff2b2b;
+      padding: 10px 20px;
+      border-radius: 8px;
+      z-index: 9999;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      text-align: center;
+      box-shadow: 0 0 10px #ff2b2b;
+    }
   </style>
 </head>
 <body>
@@ -151,36 +169,21 @@
     <div class="grid" id="product-grid"></div>
   </main>
 
-  <div id="mensaje-alerta" style="
-    display: none;
-    position: fixed;
-    bottom: 90px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #1a1a1a;
-    border: 2px solid #ff2b2b;
-    color: #ff2b2b;
-    padding: 10px 20px;
-    border-radius: 8px;
-    z-index: 9999;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 0.85rem;
-    text-align: center;
-    box-shadow: 0 0 10px #ff2b2b;
-  ">
+  <div id="mensaje-alerta">
     ⚠️ Debes registrarte o iniciar sesión para comprar.
   </div>
 
   <script>
-    const productos = [
-  { duracion: 2, precio: 0.50, texto: "Ideal para probar el cheat sin compromiso." },
-  { duracion: 7, precio: 5.00, texto: "Acceso completo durante toda una semana." },
-  { duracion: 30, precio: 12.00, texto: "Para jugadores constantes que quieren rendimiento." },
-  { duracion: 90, precio: 20.00, texto: "Mejor precio por día para uso continuo." },
-  { duracion: 180, precio: 35.00, texto: "6 meses de rendimiento sin preocuparte." },
-  { duracion: 365, precio: 60.00, texto: "La opción definitiva para usuarios fieles." },
-];
+    const stripe = Stripe("pk_live_51RQwwzEFXeoYrXLwcV5rf0XyEbXP26SmKVybwxavXRjpCtvOHgkb6Q0ylQnKR3NUbeuZxFkDsj0D26W1tYNMCbFA00LtjJecji"); // REEMPLAZA esta clave
 
+    const productos = [
+      { duracion: 2, precio: 0.50, texto: "Ideal para probar el cheat sin compromiso." },
+      { duracion: 7, precio: 5.00, texto: "Acceso completo durante toda una semana." },
+      { duracion: 30, precio: 12.00, texto: "Para jugadores constantes que quieren rendimiento." },
+      { duracion: 90, precio: 20.00, texto: "Mejor precio por día para uso continuo." },
+      { duracion: 180, precio: 35.00, texto: "6 meses de rendimiento sin preocuparte." },
+      { duracion: 365, precio: 60.00, texto: "La opción definitiva para usuarios fieles." },
+    ];
 
     const grid = document.getElementById("product-grid");
 
@@ -192,15 +195,7 @@
           <div class="price">${producto.precio.toFixed(2)} €</div>
           <div class="description">${producto.texto}</div>
           <div class="stock" data-duration="${producto.duracion}">Cargando stock...</div>
-          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-            <input type="hidden" name="cmd" value="_xclick" />
-            <input type="hidden" name="business" value="arceuscheats@gmail.com" />
-            <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - ${producto.duracion} días" />
-            <input type="hidden" name="amount" value="${producto.precio}" />
-            <input type="hidden" name="currency_code" value="EUR" />
-            <input type="hidden" name="custom" value="${localStorage.getItem("userEmail") || ""}" />
-            <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
-          </form>
+          <button class="buyBtn" data-duracion="${producto.duracion}" data-precio="${producto.precio}" disabled>Comprar con Stripe</button>
         </div>
       `;
       grid.insertAdjacentHTML("beforeend", html);
@@ -262,16 +257,41 @@
       setTimeout(() => { alerta.style.display = "none"; }, 3500);
     }
 
-    document.addEventListener("click", e => {
+    document.addEventListener("click", async e => {
       if (e.target.classList.contains("buyBtn")) {
         const isLogged = localStorage.getItem("usuarioLogueado") === "true";
         if (!isLogged) {
           e.preventDefault();
           mostrarMensajePersonalizado("⚠️ Debes registrarte o iniciar sesión para comprar.");
+          return;
+        }
+
+        const duracion = e.target.dataset.duracion;
+        const precio = e.target.dataset.precio;
+        const email = localStorage.getItem("userEmail");
+
+        try {
+          const res = await fetch("https://tu-backend.herokuapp.com/crear_sesion_stripe", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              duracion: duracion,
+              precio: precio,
+              email: email
+            })
+          });
+
+          const data = await res.json();
+          if (data.id) {
+            await stripe.redirectToCheckout({ sessionId: data.id });
+          } else {
+            alert("Error al crear la sesión de pago.");
+          }
+        } catch {
+          alert("Error al conectar con el servidor.");
         }
       }
     });
   </script>
-
 </body>
 </html>
