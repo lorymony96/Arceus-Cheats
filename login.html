@@ -172,7 +172,7 @@
 
         const result = await res.json();
         if (result.success) {
-          mensaje.textContent = "✅ Revisa tu correo para recuperar la contraseña.";
+          mensaje.textContent = "✅ Revisa tu correo para recuperar la contraseña (Revisa la carpeta de spam).";
           mensaje.style.color = "#00ff00";
         } else {
           mensaje.textContent = "❌ " + (result.message || "Error al enviar el correo.");
