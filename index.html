@@ -189,7 +189,7 @@
         <div class="product">
           <img src="ARCEUS_ICON.ico" alt="Icono">
           <h2>${producto.duracion} días</h2>
-          <div class="price">${producto.precio}</div>
+          <div class="price">${producto.precio.toFixed(2)} €</div>
           <div class="description">${producto.texto}</div>
           <div class="stock" data-duration="${producto.duracion}">Cargando stock...</div>
           <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
