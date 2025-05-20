@@ -77,11 +77,7 @@
 
   <!-- CABECERA -->
   <header>
-    <div class="register-link">
-      <a href="index.html">Tienda</a>
-      <a href="register.html">Registrarse</a>
-      <a href="login.html">Iniciar sesión</a>
-    </div>
+    <div class="register-link"></div>
     <img src="banner.png" alt="Arceus Cheats" class="banner" />
   </header>
 
@@ -93,6 +89,27 @@
     </div>
   </main>
 
+  <!-- SCRIPT PARA MOSTRAR BOTONES SEGÚN SESIÓN -->
+  <script>
+    const userLogged = localStorage.getItem("usuarioLogueado") === "true";
+    const container = document.querySelector(".register-link");
+
+    if (container) {
+      if (userLogged) {
+        container.innerHTML = `
+          <a href="index.html">Tienda</a>
+          <a href="Inicio.html">Inicio</a>
+          <a href="panel.html">Panel de usuario</a>
+        `;
+      } else {
+        container.innerHTML = `
+          <a href="index.html">Tienda</a>
+          <a href="register.html">Registrarse</a>
+          <a href="login.html">Iniciar sesión</a>
+        `;
+      }
+    }
+  </script>
+
 </body>
 </html>
-
