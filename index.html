@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -174,23 +173,36 @@
 
   <script>
     const productos = [
-      { duracion: 7, precio: 300, texto: "Acceso completo durante 1 semana." },
-      { duracion: 30, precio: 1000, texto: "Acceso completo durante 1 mes." }
-    ];
+  { duracion: 2, precio: 0.50, texto: "Ideal para probar el cheat sin compromiso." },
+  { duracion: 7, precio: 5.00, texto: "Acceso completo durante toda una semana." },
+  { duracion: 30, precio: 12.00, texto: "Para jugadores constantes que quieren rendimiento." },
+  { duracion: 90, precio: 20.00, texto: "Mejor precio por día para uso continuo." },
+  { duracion: 180, precio: 35.00, texto: "6 meses de rendimiento sin preocuparte." },
+  { duracion: 365, precio: 60.00, texto: "La opción definitiva para usuarios fieles." },
+];
+
 
     const grid = document.getElementById("product-grid");
 
     productos.forEach(producto => {
-      const html = \`
+      const html = `
         <div class="product">
           <img src="ARCEUS_ICON.ico" alt="Icono">
-          <h2>\${producto.duracion} días</h2>
-          <div class="price">\${(producto.precio / 100).toFixed(2)} €</div>
-          <div class="description">\${producto.texto}</div>
-          <div class="stock" data-duration="\${producto.duracion}">Cargando stock...</div>
-          <button class="buyBtn stripeBtn" data-duracion="\${producto.duracion}" disabled>Comprar con Stripe</button>
+          <h2>${producto.duracion} días</h2>
+          <div class="price">${producto.precio.toFixed(2)} €</div>
+          <div class="description">${producto.texto}</div>
+          <div class="stock" data-duration="${producto.duracion}">Cargando stock...</div>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" value="arceuscheats@gmail.com" />
+            <input type="hidden" name="item_name" value="Licencia Arceus Aimbot - ${producto.duracion} días" />
+            <input type="hidden" name="amount" value="${producto.precio}" />
+            <input type="hidden" name="currency_code" value="EUR" />
+            <input type="hidden" name="custom" value="${localStorage.getItem("userEmail") || ""}" />
+            <button type="submit" class="buyBtn" disabled>Comprar con PayPal</button>
+          </form>
         </div>
-      \`;
+      `;
       grid.insertAdjacentHTML("beforeend", html);
     });
 
@@ -224,21 +236,21 @@
     const container = document.querySelector(".register-link");
 
     if (container) {
-      container.innerHTML = userLogged ? \`
+      container.innerHTML = userLogged ? `
         <a href="index.html">Tienda</a>
         <a href="Inicio.html">Inicio</a>
         <a href="panel.html">Panel de usuario</a>
-      \` : \`
+      ` : `
         <a href="Inicio.html">Inicio</a>
         <a href="register.html">Registrarse</a>
         <a href="login.html">Iniciar sesión</a>
-      \`;
+      `;
     }
 
     setTimeout(() => {
       document.querySelectorAll(".stock").forEach(stockEl => {
         const duration = parseInt(stockEl.dataset.duration);
-        const button = stockEl.parentElement.querySelector(".stripeBtn");
+        const button = stockEl.parentElement.querySelector(".buyBtn");
         checkStock(duration, stockEl, button);
       });
     }, 100);
@@ -250,39 +262,16 @@
       setTimeout(() => { alerta.style.display = "none"; }, 3500);
     }
 
-    document.addEventListener("click", async e => {
-      if (e.target.classList.contains("stripeBtn")) {
+    document.addEventListener("click", e => {
+      if (e.target.classList.contains("buyBtn")) {
         const isLogged = localStorage.getItem("usuarioLogueado") === "true";
-        const email = localStorage.getItem("userEmail");
-
-        if (!isLogged || !email) {
+        if (!isLogged) {
           e.preventDefault();
           mostrarMensajePersonalizado("⚠️ Debes registrarte o iniciar sesión para comprar.");
-          return;
-        }
-
-        const duracion = e.target.dataset.duracion;
-        const producto = \`Producto - \${duracion} días\`;
-
-        try {
-          const res = await fetch("https://keylicense-c11944d8dd8e.herokuapp.com/crear_sesion_stripe", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, producto })
-          });
-
-          const data = await res.json();
-
-          if (data.url) {
-            window.location.href = data.url;
-          } else {
-            mostrarMensajePersonalizado("❌ No se pudo iniciar el pago.");
-          }
-        } catch {
-          mostrarMensajePersonalizado("❌ Error al conectar con el servidor.");
         }
       }
     });
   </script>
+
 </body>
 </html>
