@@ -271,7 +271,7 @@
         const email = localStorage.getItem("userEmail");
 
         try {
-          const res = await fetch("https://tu-backend.herokuapp.com/crear_sesion_stripe", {
+          const res = await fetch("https://keylicense-c11944d8dd8e.herokuapp.com/crear_sesion_stripe", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
