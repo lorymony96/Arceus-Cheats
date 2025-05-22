@@ -172,10 +172,10 @@
         const result = await response.json();
 
         if (result.success) {
-          mensajeDiv.textContent = "✅ Registro completado con éxito.";
+          mensajeDiv.textContent = "✅ Registro exitoso. Revisa tu correo para activar tu cuenta.";
           mensajeDiv.style.color = "#00ff00";
           document.getElementById("registerForm").reset();
-        } else {
+          } else {
           mensajeDiv.textContent = "❌ " + (result.message || "Error en el registro.");
           mensajeDiv.style.color = "red";
         }
