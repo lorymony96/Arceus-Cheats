@@ -174,7 +174,7 @@
   </div>
 
   <script>
-    const stripe = Stripe("pk_live_51RQwwzEFXeoYrXLwcV5rf0XyEbXP26SmKVybwxavXRjpCtvOHgkb6Q0ylQnKR3NUbeuZxFkDsj0D26W1tYNMCbFA00LtjJecji"); // REEMPLAZA esta clave
+    const stripe = Stripe("pk_test_51RQwx8Cu47zDKzG5cYGUfFtx8dVtdk8bBajgVtHEFGc17GKGpRsKoPe1bLx1Xa7QQiP7tRVhcZ4dcKXcpMj6gkn8OADHcrFjeF");
 
     const productos = [
       { duracion: 2, precio: 0.50, texto: "Ideal para probar el cheat sin compromiso." },
@@ -275,9 +275,8 @@
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              duracion: duracion,
-              precio: precio,
-              email: email
+            email: email,
+            duration_days: duracion
             })
           });
 
