@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificación de cuenta</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    .mensaje {
+      font-size: 1.5em;
+      color: #ff2b2b;
+    }
+  </style>
+</head>
+<body>
+  <div class="mensaje" id="mensaje">Verificando...</div>
+  <script>
+    const token = new URLSearchParams(window.location.search).get('token');
+    if (token) {
+      fetch(`https://keylicense-c11944d8dd8e.herokuapp.com/verify_email?token=${token}`)
+        .then(res => res.text())
+        .then(msg => document.getElementById("mensaje").textContent = msg)
+        .catch(() => {
+          document.getElementById("mensaje").textContent = "❌ Error al verificar el token.";
+        });
+    } else {
+      document.getElementById("mensaje").textContent = "❌ Token no proporcionado.";
+    }
+  </script>
+</body>
+</html>
