@@ -126,13 +126,13 @@
     if (container) {
       if (userLogged) {
         container.innerHTML = `
-          <a href="index.html">Tienda</a>
-          <a href="Inicio.html">Inicio</a>
+          <a href="Inicio.html">Tienda</a>
+          <a href="index.html">Inicio</a>
           <button onclick="cerrarSesion()">Cerrar sesión</button>
         `;
       } else {
         container.innerHTML = `
-          <a href="index.html">Tienda</a>
+          <a href="Inicio.html">Tienda</a>
           <a href="register.html">Registrarse</a>
           <a href="login.html">Iniciar sesión</a>
         `;
@@ -142,7 +142,7 @@
     function cerrarSesion() {
       localStorage.removeItem("usuarioLogueado");
       localStorage.removeItem("userEmail");
-      window.location.href = "Inicio.html";
+      window.location.href = "index.html";
     }
 
     const licenseContent = document.getElementById("license-content");
