@@ -80,7 +80,7 @@
     const userLogged = localStorage.getItem("usuarioLogueado") === "true";
     const container = document.querySelector(".register-link");
     if (container) {
-      container.innerHTML = userLogged ? `<a href="index.html">Tienda</a><a href="Inicio.html">Inicio</a><a href="panel.html">Panel de usuario</a>` : `<a href="Inicio.html">Inicio</a><a href="register.html">Registrarse</a><a href="login.html">Iniciar sesión</a>`;
+      container.innerHTML = userLogged ? `<a href="Inicio.html">Tienda</a><a href="index.html">Inicio</a><a href="panel.html">Panel de usuario</a>` : `<a href="index.html">Inicio</a><a href="register.html">Registrarse</a><a href="login.html">Iniciar sesión</a>`;
     }
     setTimeout(() => {
       document.querySelectorAll(".stock").forEach(stockEl => {
