@@ -57,7 +57,8 @@
 
     main {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      align-items: center;
       padding: 40px 10px;
       position: relative;
       z-index: 2;
@@ -97,6 +98,37 @@
       margin-top: 20px;
     }
 
+    .download-box {
+      background-color: #111;
+      border: 2px solid #00ffcc;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 0 15px #00ffcc;
+      width: 90%;
+      max-width: 600px;
+      margin-top: 30px;
+    }
+
+    .download-box h2 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    .download-btn:hover {
+      background-color: #00c2aa;
+    }
+
     @media (max-width: 600px) {
       .register-link {
         top: 10px;
@@ -116,6 +148,14 @@
     <div class="license-box">
       <h2>TUS LICENCIAS:</h2>
       <div id="license-content">Cargando...</div>
+    </div>
+
+    <div class="download-box">
+      <h2>DESCARGA EL CLIENTE:</h2>
+      <p>Haz clic en el botón para descargar ARCEUS_AIMBOT.exe</p>
+      <a href="https://github.com/tu_usuario/tu_repositorio/raw/main/ARCEUS_AIMBOT.exe" class="download-btn" download>
+        Descargar Cliente
+      </a>
     </div>
   </main>
 
