@@ -1,36 +1,139 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Verificación de cuenta</title>
+  <link rel="icon" href="ARCEUS_ICON.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuenta verificada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
       background-color: #0a0a0a;
       color: white;
-      font-family: 'Orbitron', sans-serif;
-      text-align: center;
-      padding-top: 100px;
+      overflow-x: hidden;
     }
-    .mensaje {
-      font-size: 1.5em;
+
+    header {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+      background-color: #0a0a0a;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .banner {
+      position: absolute;
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-height: 580px;
+      width: auto;
+      object-fit: contain;
+      z-index: 0;
+    }
+
+    .register-link {
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      z-index: 3;
+    }
+
+    .register-link a {
       color: #ff2b2b;
+      text-decoration: none;
+      border: 1px solid #ff2b2b;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      margin-left: 10px;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      padding: 40px 10px;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .mensaje-verificado {
+      font-size: 1.2rem;
+      color: #00ff00;
+    }
+
+    @media (max-width: 600px) {
+      .register-link {
+        top: 10px;
+        right: 10px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="mensaje" id="mensaje">Verificando...</div>
+
+  <!-- CABECERA -->
+  <header>
+    <div class="register-link"></div>
+    <img src="banner.png" alt="Arceus Cheats" class="banner" />
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+    <div class="mensaje-verificado" id="mensaje">
+      Verificando cuenta...
+    </div>
+  </main>
+
+  <!-- SCRIPT PARA VERIFICACIÓN -->
   <script>
     const token = new URLSearchParams(window.location.search).get('token');
+    const mensajeDiv = document.getElementById("mensaje");
+
     if (token) {
       fetch(`https://keylicense-c11944d8dd8e.herokuapp.com/verify_email?token=${token}`)
         .then(res => res.text())
-        .then(msg => document.getElementById("mensaje").textContent = msg)
+        .then(msg => {
+          if (msg.includes("✅")) {
+            mensajeDiv.innerHTML = `✅ Verificación completada.<br>Ya puedes <a href="login.html" style="color: #ff2b2b;">iniciar sesión</a>.`;
+          } else {
+            mensajeDiv.innerHTML = msg;
+            mensajeDiv.style.color = "orange";
+          }
+        })
         .catch(() => {
-          document.getElementById("mensaje").textContent = "❌ Error al verificar el token.";
+          mensajeDiv.innerHTML = "❌ Error al verificar el token.";
+          mensajeDiv.style.color = "red";
         });
     } else {
-      document.getElementById("mensaje").textContent = "❌ Token no proporcionado.";
+      mensajeDiv.innerHTML = "❌ Token no proporcionado.";
+      mensajeDiv.style.color = "red";
+    }
+
+    // Mostrar enlaces arriba según sesión
+    const userLogged = localStorage.getItem("usuarioLogueado") === "true";
+    const container = document.querySelector(".register-link");
+
+    if (container) {
+      if (userLogged) {
+        container.innerHTML = `
+          <a href="Inicio.html">Tienda</a>
+          <a href="index.html">Inicio</a>
+          <a href="panel.html">Panel de usuario</a>
+        `;
+      } else {
+        container.innerHTML = `
+          <a href="Inicio.html">Tienda</a>
+          <a href="register.html">Registrarse</a>
+          <a href="login.html">Iniciar sesión</a>
+        `;
+      }
     }
   </script>
+
 </body>
 </html>
